@@ -11,16 +11,16 @@ const icons = ["fa fa-diamond", "fa fa-diamond",
                "fa fa-bomb", "fa fa-bomb"
              ];
 
-var openCards = [];
-var matchedCards = [];
-var min = 0;
-var sec = 0;
-var timer;
-var timerRunning = false;
+let openCards = [];
+let matchedCards = [];
+let min = 0;
+let sec = 0;
+let timer;
+let timerRunning = false;
 
 
 // Create the deck
-var cardsContainer = document.querySelector(".deck");
+let cardsContainer = document.querySelector(".deck");
 
 // Initialize the game
 function initGame() {
@@ -82,7 +82,7 @@ initGame();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -138,7 +138,7 @@ shuffleDeck();
 
 
 //Restart Button
-var restartButton = document.querySelector(".restart");
+let restartButton = document.querySelector(".restart");
 restartButton.addEventListener("click", function() {
     // stop & reset timer
     stopTimer();
@@ -159,7 +159,7 @@ restartButton.addEventListener("click", function() {
 
 //Count moves
 const movesContainer = document.querySelector(".moves");
-var moves = 0;
+let moves = 0;
 function addMove() {
     moves ++;
     movesContainer.innerHTML = moves;
@@ -219,10 +219,10 @@ function insertTime() {
 
 // Transfer stats to win modal
 function copyStats() {
-    var timeStat = document.querySelector('.modal_time');
-    var timeElapsed = document.querySelector('.timer').innerHTML;
-    var movesStat = document.querySelector('.modal_moves');
-    var starsStat = document.querySelector('.modal_stars');
+    let timeStat = document.querySelector('.modal_time');
+    let timeElapsed = document.querySelector('.timer').innerHTML;
+    let movesStat = document.querySelector('.modal_moves');
+    let starsStat = document.querySelector('.modal_stars');
 
     timeStat.innerHTML = 'Time = ' + timerContainer.innerHTML;
     movesStat.innerHTML = 'Moves = ' + movesContainer.innerHTML;
@@ -231,12 +231,12 @@ function copyStats() {
 
 // Win modal
 function toggleModal() {
-    var modal = document.querySelector('.modal');
+    let modal = document.querySelector('.modal');
     modal.classList.toggle('hide');
 }
 
 // Modal Replay Button
-var replayButton = document.querySelector('.modal_replay');
+let replayButton = document.querySelector('.modal_replay');
 replayButton.addEventListener("click", function() {
     // stop & reset timer
     stopTimer();
@@ -254,17 +254,3 @@ replayButton.addEventListener("click", function() {
     shuffleDeck();
     toggleModal();
 });
-
-
-
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
